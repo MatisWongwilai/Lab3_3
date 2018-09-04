@@ -66,14 +66,14 @@ public class OX {
 
         if(checkWin(col, row)){
             if(getCurrentPlayer().equals("X")){
-                countX++;
+                countX  = countX +1;
             }else if(getCurrentPlayer().equals("O")){
-                countO++;
+                countO = countO +1;
             }
 
         }
         if(isDraw()){
-            countX++;
+            countDraw = countDraw + 1;
         }
 
 
