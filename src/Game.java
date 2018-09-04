@@ -55,6 +55,16 @@ public class Game {
         System.out.println("O Win: " + countO);
         System.out.println("Draw: " + countDraw);
     }
+    public int countX(){
+        return  countX;
+    }
+    public int countO(){
+        return  countO;
+    }
+    public int countDraw(){
+        return  countDraw;
+    }
+
 
     private static void printTable() {
         System.out.print(ox.getTableString());

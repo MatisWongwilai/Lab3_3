@@ -1,7 +1,5 @@
 public class OX {
 
-
-
     private String[][] table = {
             {" " ,"0" ,"1" ,"2"} ,
             {"0" ,"-" ,"-" ,"-"} ,
@@ -17,6 +15,10 @@ public class OX {
     public OX(){
         player = "X";
         turnCount =0;
+        countX = 0;
+        countO = 0;
+        countDraw = 0;
+
     }
 
     public String getTableString() {
@@ -52,14 +54,27 @@ public class OX {
 
 
     public boolean put(int col, int row) {
-        if ((row > 2 || col > 2) || (row < 0 || col< 0)) {
-            return false;
+        try {
+            if(!table[row+1][col+1].equals("-")){
+                return false;
+            }
+            table[row+1][col+1] = player;
+        }catch (ArrayIndexOutOfBoundsException e){
+            return  false;
         }
-        if(!table[row+1][col+1].equals("-")){
-             return false;
+        turnCount++;
+
+        if(checkWin(col, row)){
+            if(getCurrentPlayer().equals("X")){
+                countX++;
+            }else if(getCurrentPlayer().equals("O")){
+                countO++;
+            }
+
         }
-        table[row+1][col+1] = getCurrentPlayer();
-        turnCount ++;
+        if(isDraw()){
+            countX++;
+        }
 
 
         return true;
